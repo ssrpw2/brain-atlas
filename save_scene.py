@@ -120,6 +120,9 @@ for fname in sorted(os.listdir(OBJ_DIR)):
     bpy.context.view_layer.objects.active = obj
     bpy.ops.object.shade_smooth()
 
+    # Set origin to geometry center
+    bpy.ops.object.origin_set(type='ORIGIN_GEOMETRY', center='BOUNDS')
+
     # Move to appropriate collection
     for group_name, members in LOBE_GROUPS.items():
         if struct_name in members:
@@ -144,6 +147,15 @@ for obj in bpy.data.objects:
 coords = np.array(all_coords)
 center = coords.mean(axis=0)
 span = (coords.max(axis=0) - coords.min(axis=0)).max()
+
+# Move all objects so the brain is centered at world origin
+offset = mathutils.Vector((-center[0], -center[1], -center[2]))
+for obj in bpy.data.objects:
+    if obj.type == 'MESH':
+        obj.location += offset
+
+# Recalculate center (should be ~0 now)
+center = np.array([0.0, 0.0, 0.0])
 
 # Lighting
 key = bpy.data.lights.new(name="Key Light", type='SUN')
