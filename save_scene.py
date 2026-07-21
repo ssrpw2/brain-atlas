@@ -135,28 +135,31 @@ for fname in sorted(os.listdir(OBJ_DIR)):
 
 print(f"Imported {imported} objects into {len(LOBE_GROUPS)} collections")
 
-# Compute center for camera
-import numpy as np
-all_coords = []
+# Compute center for camera (no numpy needed)
+all_x, all_y, all_z = [], [], []
 for obj in bpy.data.objects:
     if obj.type != 'MESH':
         continue
     for v in obj.data.vertices:
         co = obj.matrix_world @ v.co
-        all_coords.append((co.x, co.y, co.z))
-coords = np.array(all_coords)
-center = coords.mean(axis=0)
-span = (coords.max(axis=0) - coords.min(axis=0)).max()
+        all_x.append(co.x)
+        all_y.append(co.y)
+        all_z.append(co.z)
+
+cx = sum(all_x) / len(all_x)
+cy = sum(all_y) / len(all_y)
+z_min = min(all_z)
+z_max = max(all_z)
+span = max(max(all_x) - min(all_x), max(all_y) - min(all_y), z_max - z_min)
 
 # Move all objects so the brain is centered at world origin (XY), ventral surface on XY plane (Z=0)
-z_min = coords[:,2].min()
-offset = mathutils.Vector((-center[0], -center[1], -z_min))
+offset = mathutils.Vector((-cx, -cy, -z_min))
 for obj in bpy.data.objects:
     if obj.type == 'MESH':
         obj.location += offset
 
-# Recalculate center (X,Y ~0, Z shifted so bottom sits on XY plane)
-center = np.array([0.0, 0.0, (coords[:,2].max() - z_min) / 2.0])
+# Center for camera targeting (X,Y at origin, Z at midpoint of brain height)
+center = (0.0, 0.0, (z_max - z_min) / 2.0)
 
 # Lighting
 key = bpy.data.lights.new(name="Key Light", type='SUN')

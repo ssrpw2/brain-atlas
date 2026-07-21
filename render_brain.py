@@ -95,19 +95,17 @@ for fname in sorted(os.listdir(OBJ_DIR)):
 
 print(f"Imported {len(imported_objects)} objects")
 
-# Compute bounding box of all objects
-import numpy as np
-
-all_coords = []
+# Compute bounding box of all objects (no numpy needed)
+all_x, all_y, all_z = [], [], []
 for obj in imported_objects:
-    mesh = obj.data
-    for v in mesh.vertices:
+    for v in obj.data.vertices:
         co = obj.matrix_world @ v.co
-        all_coords.append((co.x, co.y, co.z))
+        all_x.append(co.x)
+        all_y.append(co.y)
+        all_z.append(co.z)
 
-coords = np.array(all_coords)
-center = coords.mean(axis=0)
-span = (coords.max(axis=0) - coords.min(axis=0)).max()
+center = (sum(all_x)/len(all_x), sum(all_y)/len(all_y), sum(all_z)/len(all_z))
+span = max(max(all_x)-min(all_x), max(all_y)-min(all_y), max(all_z)-min(all_z))
 
 print(f"Center: {center}, Span: {span}")
 
