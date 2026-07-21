@@ -135,6 +135,18 @@ for fname in sorted(os.listdir(OBJ_DIR)):
 
 print(f"Imported {imported} objects into {len(LOBE_GROUPS)} collections")
 
+# Rotate brain so inferior surface (brainstem) faces down (-Z)
+# BodyParts3D: X=left-right, Y=anterior-posterior, Z=superior-inferior
+# After Blender import, rotate -90° around X to put inferior surface on ground
+rot_matrix = mathutils.Matrix.Rotation(math.radians(-90), 4, 'X')
+for obj in bpy.data.objects:
+    if obj.type == 'MESH':
+        obj.matrix_world = rot_matrix @ obj.matrix_world
+
+# Apply transforms so rotation is baked into mesh data
+bpy.ops.object.select_all(action='SELECT')
+bpy.ops.object.transform_apply(location=False, rotation=True, scale=False)
+
 # Compute center for camera (no numpy needed)
 all_x, all_y, all_z = [], [], []
 for obj in bpy.data.objects:
@@ -152,7 +164,7 @@ z_min = min(all_z)
 z_max = max(all_z)
 span = max(max(all_x) - min(all_x), max(all_y) - min(all_y), z_max - z_min)
 
-# Move all objects so the brain is centered at world origin (XY), ventral surface on XY plane (Z=0)
+# Move all objects so brain is centered at origin (XY), brainstem resting on XY plane (Z=0)
 offset = mathutils.Vector((-cx, -cy, -z_min))
 for obj in bpy.data.objects:
     if obj.type == 'MESH':
