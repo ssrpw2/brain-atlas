@@ -148,14 +148,15 @@ coords = np.array(all_coords)
 center = coords.mean(axis=0)
 span = (coords.max(axis=0) - coords.min(axis=0)).max()
 
-# Move all objects so the brain is centered at world origin
-offset = mathutils.Vector((-center[0], -center[1], -center[2]))
+# Move all objects so the brain is centered at world origin (XY), ventral surface on XY plane (Z=0)
+z_min = coords[:,2].min()
+offset = mathutils.Vector((-center[0], -center[1], -z_min))
 for obj in bpy.data.objects:
     if obj.type == 'MESH':
         obj.location += offset
 
-# Recalculate center (should be ~0 now)
-center = np.array([0.0, 0.0, 0.0])
+# Recalculate center (X,Y ~0, Z shifted so bottom sits on XY plane)
+center = np.array([0.0, 0.0, (coords[:,2].max() - z_min) / 2.0])
 
 # Lighting
 key = bpy.data.lights.new(name="Key Light", type='SUN')
