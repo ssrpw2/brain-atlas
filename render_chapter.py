@@ -39,7 +39,7 @@ COLORS = {
 }
 
 DIM_COLOR = (0.55, 0.55, 0.58, 1.0)
-DIM_ALPHA = 0.25
+DIM_ALPHA = 0.08
 
 # Chapter configs: which structures to highlight and which views to render
 CHAPTERS = {
@@ -97,6 +97,8 @@ for fname in sorted(os.listdir(OBJ_DIR)):
         bsdf.inputs["Base Color"].default_value = color
         bsdf.inputs["Roughness"].default_value = 0.5
         bsdf.inputs["Specular IOR Level"].default_value = 0.4
+        bsdf.inputs["Emission Color"].default_value = color
+        bsdf.inputs["Emission Strength"].default_value = 0.6
     else:
         bsdf.inputs["Base Color"].default_value = DIM_COLOR
         bsdf.inputs["Roughness"].default_value = 0.8
