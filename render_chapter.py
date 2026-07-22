@@ -33,6 +33,12 @@ COLORS = {
     "hypothalamus":           (0.92, 0.33, 0.33, 1.0),
     "hippocampus":            (0.95, 0.75, 0.35, 1.0),
     "amygdala":               (0.90, 0.60, 0.30, 1.0),
+    "fornix":                 (0.80, 0.80, 0.78, 1.0),
+    "fornix_commissure":      (0.80, 0.80, 0.78, 1.0),
+    "caudate_nucleus":        (0.40, 0.72, 0.68, 1.0),
+    "putamen":                (0.35, 0.65, 0.62, 1.0),
+    "globus_pallidus":        (0.30, 0.60, 0.70, 1.0),
+    "pineal_gland":           (0.54, 0.56, 0.44, 1.0),
     "corpus_callosum":        (0.75, 0.75, 0.75, 1.0),
     "insula":                 (0.50, 0.70, 0.65, 1.0),
     "cingulate_gyrus":        (0.60, 0.60, 0.80, 1.0),
@@ -50,6 +56,8 @@ CHAPTERS = {
             "midsagittal":    {"azimuth": 90,  "elevation": 0,  "label": "Midsagittal"},
             "anterior":       {"azimuth": 0,   "elevation": 5,  "label": "Anterior"},
             "ventral":        {"azimuth": 0,   "elevation": -89, "label": "Ventral"},
+            "deep_ghosted":   {"azimuth": 70,  "elevation": 20, "label": "Deep structures (ghosted)"},
+            "deep_only":      {"azimuth": 70,  "elevation": 20, "label": "Deep structures (isolated)", "hide_dim": True},
         }
     }
 }
@@ -78,6 +86,7 @@ bg = world.node_tree.nodes["Background"]
 bg.inputs[0].default_value = (0.95, 0.95, 0.97, 1.0)
 
 imported_objects = []
+dim_objects = []
 for fname in sorted(os.listdir(OBJ_DIR)):
     if not fname.endswith('.obj'):
         continue
@@ -106,6 +115,7 @@ for fname in sorted(os.listdir(OBJ_DIR)):
         bsdf.inputs["Alpha"].default_value = DIM_ALPHA
         mat.blend_method = 'BLEND'
         mat.shadow_method = 'NONE'
+        dim_objects.append(obj)
 
     obj.data.materials.clear()
     obj.data.materials.append(mat)
@@ -174,6 +184,10 @@ scene.camera = cam_obj
 
 dist = span * 2
 for view_name, view_cfg in cfg["views"].items():
+    hide_dim = view_cfg.get("hide_dim", False)
+    for obj in dim_objects:
+        obj.hide_render = hide_dim
+
     az = math.radians(view_cfg["azimuth"])
     el = math.radians(view_cfg["elevation"])
 

@@ -32,6 +32,12 @@ COLORS = {
     "hypothalamus":           (0.92, 0.33, 0.33, 1.0),    # hypothalamus - vivid red
     "hippocampus":            (0.95, 0.75, 0.35, 1.0),    # hippocampus - amber
     "amygdala":               (0.90, 0.60, 0.30, 1.0),    # amygdala - orange
+    "fornix":                 (0.80, 0.80, 0.78, 1.0),    # fornix - cream (white matter)
+    "fornix_commissure":      (0.80, 0.80, 0.78, 1.0),
+    "caudate_nucleus":        (0.40, 0.72, 0.68, 1.0),    # caudate - teal (basal ganglia)
+    "putamen":                (0.35, 0.65, 0.62, 1.0),    # putamen - darker teal
+    "globus_pallidus":        (0.30, 0.60, 0.70, 1.0),    # globus pallidus - blue-teal
+    "pineal_gland":           (0.54, 0.56, 0.44, 1.0),    # pineal - olive (brainstem)
     "corpus_callosum":        (0.75, 0.75, 0.75, 1.0),    # corpus callosum - light gray
     "insula":                 (0.50, 0.70, 0.65, 1.0),    # insula - teal
     "cingulate_gyrus":        (0.60, 0.60, 0.80, 1.0),    # cingulate - lavender
