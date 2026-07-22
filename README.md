@@ -76,9 +76,9 @@ Output images are saved to the `renders/` folder.
 
 All 3D mesh data comes from **BodyParts3D** (version 4.0), produced by the Database Center for Life Science (DBCLS), Japan.
 
-> BodyParts3D, Copyright The Database Center for Life Science, licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)
+> 3D anatomical data: BodyParts3D v4.0, © The Database Center for Life Science, licensed under CC BY 4.0 International. Models have been selected, rendered, recolored, and adapted for this study guide.
 
-The CC BY 4.0 license means the data is free to use, share, and adapt for any purpose, including commercially, as long as you give appropriate credit. This repository provides that attribution here and in the project pages.
+The CC BY 4.0 license means the data is free to use, share, and adapt for any purpose, including commercially, as long as you give appropriate credit. 
 
 - Website: https://lifesciencedb.jp/bp3d/
 - Download: https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html
