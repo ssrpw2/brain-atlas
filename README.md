@@ -2,7 +2,7 @@
 
 Interactive 3D brain atlas for introductory neuroscience study. 45 anatomical mesh files covering 23 brain structures, organized by lobe and color-coded by region.
 
-[Braint Atlas](https://ssrpw2.github.io/brain-atlas/)
+[Brain Atlas](https://ssrpw2.github.io/brain-atlas/)
 ## What's in this repo
 
 | File / Folder | What it is |
