@@ -1,0 +1,261 @@
+<title>Brain Atlas</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --bg-card: #ffffff;
+    --text: #2a2d32;
+    --text-muted: #6b7280;
+    --border: #e2e5ea;
+    --frontal: #6baecb;
+    --parietal: #c7b563;
+    --temporal: #5cc77a;
+    --occipital: #a86bc7;
+    --limbic: #d98c5c;
+    --brainstem: #8a8f70;
+    --cerebellum: #c4856b;
+    --accent: #6baecb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181d;
+      --bg-card: #1e2128;
+      --text: #e1e4e8;
+      --text-muted: #8b949e;
+      --border: #2d333b;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #f6f7f9;
+    --bg-card: #ffffff;
+    --text: #2a2d32;
+    --text-muted: #6b7280;
+    --border: #e2e5ea;
+  }
+  :root[data-theme="dark"] {
+    --bg: #16181d;
+    --bg-card: #1e2128;
+    --text: #e1e4e8;
+    --text-muted: #8b949e;
+    --border: #2d333b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  header {
+    padding: 48px 0 32px;
+    text-align: center;
+  }
+  header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .hero {
+    margin: 24px 0 48px;
+    text-align: center;
+  }
+  .hero img {
+    max-width: 100%;
+    height: auto;
+    max-height: 420px;
+    border-radius: 12px;
+    background: #1a1c22;
+  }
+  .hero .caption {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 10px;
+  }
+
+  .actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin: 32px 0 48px;
+    flex-wrap: wrap;
+  }
+  .actions a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity 0.15s;
+  }
+  .actions a:hover { opacity: 0.85; }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-secondary {
+    background: var(--bg-card);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+
+  h2 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  .structures {
+    margin-bottom: 48px;
+  }
+  .lobe-group {
+    margin-bottom: 20px;
+  }
+  .lobe-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+  }
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  .lobe-structures {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    padding-left: 20px;
+  }
+
+  .info-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 48px;
+  }
+  .info-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .info-card p, .info-card li {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+  .info-card ol {
+    padding-left: 20px;
+    margin-top: 8px;
+  }
+  .info-card li { margin-bottom: 4px; }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 0;
+    margin-top: 24px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.7;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.7rem; }
+    header { padding: 32px 0 24px; }
+    .actions { flex-direction: column; align-items: center; }
+  }
+</style>
+
+<div class="container">
+  <header>
+    <h1>Brain Atlas</h1>
+    <p>Interactive 3D brain atlas for introductory neuroscience. 23 structures from BodyParts3D, color-coded by region.</p>
+  </header>
+
+  <div class="hero">
+    <img src="renders/brain_lateral_left.png" alt="Left lateral view of the brain, color-coded by lobe">
+    <div class="caption">Left lateral view &mdash; frontal (blue), parietal (gold), temporal (green), occipital (purple), cerebellum (terracotta)</div>
+  </div>
+
+  <div class="actions">
+    <a href="views.html" class="btn-primary">View All Angles</a>
+    <a href="https://github.com/ssrpw2/brain-atlas" class="btn-secondary">GitHub Repo</a>
+  </div>
+
+  <section class="structures">
+    <h2>Structures</h2>
+
+    <div class="lobe-group">
+      <div class="lobe-label"><span class="dot" style="background: var(--frontal)"></span> Frontal Lobe</div>
+      <div class="lobe-structures">Superior frontal gyrus, middle frontal gyrus, inferior frontal gyrus, precentral gyrus (primary motor cortex)</div>
+    </div>
+
+    <div class="lobe-group">
+      <div class="lobe-label"><span class="dot" style="background: var(--parietal)"></span> Parietal Lobe</div>
+      <div class="lobe-structures">Postcentral gyrus (primary somatosensory cortex), supramarginal gyrus, angular gyrus</div>
+    </div>
+
+    <div class="lobe-group">
+      <div class="lobe-label"><span class="dot" style="background: var(--temporal)"></span> Temporal Lobe</div>
+      <div class="lobe-structures">Middle temporal gyrus, inferior temporal gyrus, fusiform gyrus, parahippocampal gyrus</div>
+    </div>
+
+    <div class="lobe-group">
+      <div class="lobe-label"><span class="dot" style="background: var(--occipital)"></span> Occipital Lobe</div>
+      <div class="lobe-structures">Occipital lobe (primary visual cortex)</div>
+    </div>
+
+    <div class="lobe-group">
+      <div class="lobe-label"><span class="dot" style="background: var(--limbic)"></span> Limbic &amp; Deep Structures</div>
+      <div class="lobe-structures">Hippocampus, amygdala, thalamus, hypothalamus, cingulate gyrus, insula, corpus callosum</div>
+    </div>
+
+    <div class="lobe-group">
+      <div class="lobe-label"><span class="dot" style="background: var(--brainstem)"></span> Brainstem</div>
+      <div class="lobe-structures">Pons, medulla oblongata, midbrain</div>
+    </div>
+
+    <div class="lobe-group">
+      <div class="lobe-label"><span class="dot" style="background: var(--cerebellum)"></span> Cerebellum</div>
+      <div class="lobe-structures">Cerebellar hemispheres</div>
+    </div>
+  </section>
+
+  <div class="info-card">
+    <h3>Quick Start</h3>
+    <ol>
+      <li>Download and install <a href="https://www.blender.org/download/" style="color: var(--accent)">Blender</a> (free, version 4.0+)</li>
+      <li>Download this repo as a ZIP (green <strong>Code</strong> button on GitHub)</li>
+      <li>Open <code>brain_atlas.blend</code> in Blender</li>
+      <li>Orbit with middle-mouse drag, zoom with scroll, toggle lobes with eye icons in the Outliner</li>
+    </ol>
+  </div>
+
+  <footer>
+    <div>3D mesh data from <a href="https://lifesciencedb.jp/bp3d/">BodyParts3D</a> v4.0, Database Center for Life Science (DBCLS), Japan</div>
+    <div>Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div>
+  </footer>
+</div>

@@ -1,0 +1,296 @@
+<title>Brain Atlas — Anatomical Views</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --bg-card: #ffffff;
+    --bg-render: #1a1c22;
+    --text: #2a2d32;
+    --text-muted: #6b7280;
+    --border: #e2e5ea;
+    --frontal: #6baecb;
+    --parietal: #c7b563;
+    --temporal: #5cc77a;
+    --occipital: #a86bc7;
+    --limbic: #d98c5c;
+    --brainstem: #8a8f70;
+    --cerebellum: #c4856b;
+    --thalamus: #da8d8d;
+    --hippocampus: #f2bf59;
+    --amygdala: #e69a4d;
+    --corpus: #bfbfbf;
+    --insula: #80b3a6;
+    --cingulate: #9999cc;
+    --accent: #6baecb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181d;
+      --bg-card: #1e2128;
+      --text: #e1e4e8;
+      --text-muted: #8b949e;
+      --border: #2d333b;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #f6f7f9;
+    --bg-card: #ffffff;
+    --text: #2a2d32;
+    --text-muted: #6b7280;
+    --border: #e2e5ea;
+  }
+  :root[data-theme="dark"] {
+    --bg: #16181d;
+    --bg-card: #1e2128;
+    --text: #e1e4e8;
+    --text-muted: #8b949e;
+    --border: #2d333b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  header {
+    padding: 40px 0 12px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .back-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .back-link:hover { text-decoration: underline; }
+
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 32px;
+    max-width: 640px;
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-bottom: 36px;
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .legend-title {
+    width: 100%;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+  .swatch {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 48px;
+  }
+
+  .view-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .view-image {
+    background: var(--bg-render);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .view-image img {
+    max-width: 100%;
+    height: auto;
+    max-height: 480px;
+  }
+  .view-info {
+    padding: 16px 20px;
+  }
+  .view-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .view-desc {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  .pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .pair .view-image img {
+    max-height: 360px;
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 0;
+    margin-top: 24px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.7;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 700px) {
+    .pair { grid-template-columns: 1fr; }
+    header h1 { font-size: 1.4rem; }
+    header { padding: 28px 0 8px; }
+    .view-image { padding: 12px; }
+    .view-image img { max-height: 320px; }
+  }
+</style>
+
+<div class="container">
+  <header>
+    <h1>Anatomical Views</h1>
+    <a href="index.html" class="back-link">&larr; Home</a>
+  </header>
+  <p class="subtitle">Seven standard anatomical perspectives, rendered from the Blender scene. Structures are color-coded by region. All renders use transparent backgrounds at 1920&times;1080.</p>
+
+  <div class="legend">
+    <div class="legend-title">Color Key</div>
+    <span class="legend-item"><span class="swatch" style="background: var(--frontal)"></span> Frontal</span>
+    <span class="legend-item"><span class="swatch" style="background: var(--parietal)"></span> Parietal</span>
+    <span class="legend-item"><span class="swatch" style="background: var(--temporal)"></span> Temporal</span>
+    <span class="legend-item"><span class="swatch" style="background: var(--occipital)"></span> Occipital</span>
+    <span class="legend-item"><span class="swatch" style="background: var(--cerebellum)"></span> Cerebellum</span>
+    <span class="legend-item"><span class="swatch" style="background: var(--brainstem)"></span> Brainstem</span>
+    <span class="legend-item"><span class="swatch" style="background: var(--thalamus)"></span> Thalamus</span>
+    <span class="legend-item"><span class="swatch" style="background: var(--hippocampus)"></span> Hippocampus</span>
+    <span class="legend-item"><span class="swatch" style="background: var(--amygdala)"></span> Amygdala</span>
+    <span class="legend-item"><span class="swatch" style="background: var(--corpus)"></span> Corpus Callosum</span>
+    <span class="legend-item"><span class="swatch" style="background: var(--insula)"></span> Insula</span>
+    <span class="legend-item"><span class="swatch" style="background: var(--cingulate)"></span> Cingulate</span>
+  </div>
+
+  <div class="gallery">
+
+    <!-- Lateral pair -->
+    <div class="pair">
+      <div class="view-card">
+        <div class="view-image">
+          <img src="renders/brain_lateral_left.png" alt="Left lateral view">
+        </div>
+        <div class="view-info">
+          <div class="view-name">Left Lateral</div>
+          <div class="view-desc">View from the left side. Shows frontal, parietal, temporal, and occipital lobes, plus the cerebellum. The central sulcus separates the precentral (motor) and postcentral (sensory) gyri.</div>
+        </div>
+      </div>
+      <div class="view-card">
+        <div class="view-image">
+          <img src="renders/brain_lateral_right.png" alt="Right lateral view">
+        </div>
+        <div class="view-info">
+          <div class="view-name">Right Lateral</div>
+          <div class="view-desc">Mirror of the left lateral view. The same four lobes and cerebellum are visible. Functional lateralization means some areas differ in role between hemispheres.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Anterior / Posterior pair -->
+    <div class="pair">
+      <div class="view-card">
+        <div class="view-image">
+          <img src="renders/brain_anterior.png" alt="Anterior view">
+        </div>
+        <div class="view-info">
+          <div class="view-name">Anterior (Front)</div>
+          <div class="view-desc">Looking at the face of the brain. The frontal lobes dominate this view, with the temporal lobes visible below. The longitudinal fissure divides the two hemispheres.</div>
+        </div>
+      </div>
+      <div class="view-card">
+        <div class="view-image">
+          <img src="renders/brain_posterior.png" alt="Posterior view">
+        </div>
+        <div class="view-info">
+          <div class="view-name">Posterior (Back)</div>
+          <div class="view-desc">Looking at the back of the brain. The occipital lobes (primary visual cortex) are prominent, with the cerebellum sitting below.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dorsal / Ventral pair -->
+    <div class="pair">
+      <div class="view-card">
+        <div class="view-image">
+          <img src="renders/brain_dorsal.png" alt="Dorsal view">
+        </div>
+        <div class="view-info">
+          <div class="view-name">Dorsal (Top)</div>
+          <div class="view-desc">Looking down at the top of the brain. The longitudinal fissure runs anterior-to-posterior. Frontal lobes are at the top of this image, occipital at the bottom.</div>
+        </div>
+      </div>
+      <div class="view-card">
+        <div class="view-image">
+          <img src="renders/brain_ventral.png" alt="Ventral view">
+        </div>
+        <div class="view-info">
+          <div class="view-name">Ventral (Bottom)</div>
+          <div class="view-desc">The underside of the brain. Shows the temporal lobes, brainstem structures, and cerebellum. The parahippocampal and fusiform gyri are visible on the temporal lobe surface.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Midsagittal (full width) -->
+    <div class="view-card">
+      <div class="view-image">
+        <img src="renders/brain_midsagittal.png" alt="Midsagittal view">
+      </div>
+      <div class="view-info">
+        <div class="view-name">Midsagittal</div>
+        <div class="view-desc">A cut through the midline of the brain, exposing medial structures. The corpus callosum (gray) connects the two hemispheres. The cingulate gyrus (lavender) arches above it. Below, the thalamus, hypothalamus, and brainstem (pons, midbrain, medulla) are visible. The cerebellum sits at the posterior base.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div>3D mesh data from <a href="https://lifesciencedb.jp/bp3d/">BodyParts3D</a> v4.0, Database Center for Life Science (DBCLS), Japan</div>
+    <div>Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div>
+  </footer>
+</div>
