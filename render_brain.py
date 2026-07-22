@@ -95,6 +95,14 @@ for fname in sorted(os.listdir(OBJ_DIR)):
 
 print(f"Imported {len(imported_objects)} objects")
 
+# Rotate brain so brainstem faces down (-Z), matching save_scene.py
+rot_matrix = mathutils.Matrix.Rotation(math.radians(-90), 4, 'X')
+for obj in imported_objects:
+    obj.matrix_world = rot_matrix @ obj.matrix_world
+
+bpy.ops.object.select_all(action='SELECT')
+bpy.ops.object.transform_apply(location=False, rotation=True, scale=False)
+
 # Compute bounding box of all objects (no numpy needed)
 all_x, all_y, all_z = [], [], []
 for obj in imported_objects:
@@ -104,8 +112,18 @@ for obj in imported_objects:
         all_y.append(co.y)
         all_z.append(co.z)
 
-center = (sum(all_x)/len(all_x), sum(all_y)/len(all_y), sum(all_z)/len(all_z))
-span = max(max(all_x)-min(all_x), max(all_y)-min(all_y), max(all_z)-min(all_z))
+cx = sum(all_x) / len(all_x)
+cy = sum(all_y) / len(all_y)
+z_min = min(all_z)
+z_max = max(all_z)
+span = max(max(all_x) - min(all_x), max(all_y) - min(all_y), z_max - z_min)
+
+# Center brain at origin (XY), brainstem resting on XY plane (Z=0)
+offset = mathutils.Vector((-cx, -cy, -z_min))
+for obj in imported_objects:
+    obj.location += offset
+
+center = (0.0, 0.0, (z_max - z_min) / 2.0)
 
 print(f"Center: {center}, Span: {span}")
 
@@ -134,7 +152,7 @@ rim_obj.rotation_euler = (math.radians(-20), math.radians(0), math.radians(150))
 # Camera
 cam_data = bpy.data.cameras.new(name="Camera")
 cam_data.type = 'ORTHO'
-cam_data.ortho_scale = span * 1.3
+cam_data.ortho_scale = span * 1.6
 cam_obj = bpy.data.objects.new(name="Camera", object_data=cam_data)
 scene.collection.objects.link(cam_obj)
 scene.camera = cam_obj
