@@ -1,0 +1,412 @@
+<title>Ch 10 — Biological Rhythms and Sleep | Brain Atlas</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --bg-card: #ffffff;
+    --bg-render: #1a1c22;
+    --text: #2a2d32;
+    --text-muted: #6b7280;
+    --border: #e2e5ea;
+    --hypothalamus: #d97373;
+    --thalamus: #da8d8d;
+    --brainstem: #8a8f70;
+    --accent: #d97373;
+    --accent-light: rgba(217, 115, 115, 0.12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181d;
+      --bg-card: #1e2128;
+      --text: #e1e4e8;
+      --text-muted: #8b949e;
+      --border: #2d333b;
+      --accent-light: rgba(217, 115, 115, 0.15);
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #f6f7f9; --bg-card: #ffffff; --text: #2a2d32;
+    --text-muted: #6b7280; --border: #e2e5ea;
+    --accent-light: rgba(217, 115, 115, 0.12);
+  }
+  :root[data-theme="dark"] {
+    --bg: #16181d; --bg-card: #1e2128; --text: #e1e4e8;
+    --text-muted: #8b949e; --border: #2d333b;
+    --accent-light: rgba(217, 115, 115, 0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  header {
+    padding: 40px 0 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .back-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .back-link:hover { text-decoration: underline; }
+  .chapter-num {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+  }
+  header h1 {
+    width: 100%;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-top: 4px;
+  }
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 32px;
+    max-width: 640px;
+  }
+
+  .hero-view {
+    margin-bottom: 40px;
+  }
+  .view-img-wrap {
+    background: var(--bg-render);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+  .view-img-wrap img {
+    max-width: 100%;
+    height: auto;
+    max-height: 480px;
+  }
+  .view-caption {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  .structures-intro {
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+    color: var(--text-muted);
+  }
+
+  .structure-section {
+    margin-bottom: 36px;
+  }
+
+  .structure-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .structure-card-body {
+    padding: 20px 24px;
+  }
+  .structure-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .structure-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .structure-aka {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  .structure-desc {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  .structure-desc strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .key-concept {
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+  .key-concept .label {
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .views-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .views-pair .view-img-wrap img { max-height: 360px; }
+
+  .pathway-section {
+    margin-bottom: 40px;
+  }
+  .pathway-steps {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  .pathway-step {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-align: center;
+    min-width: 120px;
+  }
+  .pathway-step.highlighted {
+    border-color: var(--accent);
+    background: var(--accent-light);
+  }
+  .pathway-step small {
+    display: block;
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  .pathway-arrow {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    padding: 0 6px;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .vocab-list {
+    margin-bottom: 40px;
+  }
+  .vocab-list dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 6px 16px;
+    font-size: 0.88rem;
+  }
+  .vocab-list dt {
+    font-weight: 600;
+    text-align: right;
+    padding-top: 2px;
+  }
+  .vocab-list dd {
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 0;
+    margin-top: 24px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.7;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.4rem; }
+    .views-pair { grid-template-columns: 1fr; }
+    .pathway-steps { flex-direction: column; }
+    .pathway-arrow { transform: rotate(90deg); }
+    .vocab-list dl { grid-template-columns: 1fr; }
+    .vocab-list dt { text-align: left; }
+  }
+</style>
+
+<div class="container">
+  <header>
+    <a href="index.html" class="back-link">&larr; Home</a>
+    <a href="views.html" class="back-link">All Views</a>
+    <div class="chapter-num">Chapter 10</div>
+    <h1>Biological Rhythms and Sleep</h1>
+  </header>
+  <p class="subtitle">Brain structures involved in circadian rhythm generation, light entrainment, and the sleep-waking cycle. Highlighted structures are shown in color; the rest of the brain is ghosted for context.</p>
+
+  <div class="hero-view">
+    <div class="view-img-wrap">
+      <img src="renders/ch10_midsagittal.png" alt="Midsagittal view highlighting hypothalamus, thalamus, and brainstem">
+    </div>
+    <div class="view-caption">Midsagittal view &mdash; hypothalamus and thalamus (salmon/pink) with brainstem structures (olive) highlighted. Cortical structures ghosted.</div>
+  </div>
+
+  <div class="structure-section">
+    <h2>Key Structures</h2>
+
+    <div class="structure-card">
+      <div class="structure-card-body">
+        <div class="structure-name">
+          <span class="structure-dot" style="background: var(--hypothalamus)"></span>
+          Hypothalamus
+        </div>
+        <div class="structure-aka">Contains the suprachiasmatic nucleus (SCN)</div>
+        <div class="structure-desc">
+          The hypothalamus houses the <strong>suprachiasmatic nucleus (SCN)</strong>, the brain's master circadian clock. Named for its position above the optic chiasm, the SCN generates a ~24-hour rhythm through a molecular feedback loop involving the Clock, Cycle, and Period proteins. Lesions of the SCN eliminate circadian rhythms in drinking, locomotion, and hormone secretion. SCN cells removed from the brain and placed in a dish continue to show circadian rhythms for days, confirming that the clock is endogenous.
+        </div>
+        <div class="key-concept">
+          <div class="label">Key experiment</div>
+          Ralph &amp; Menaker (1988) found hamsters with a <em>tau</em> mutation showing a 22-hour free-running period instead of the normal 24 hours. Transplanting SCN tissue between normal and mutant hamsters showed the recipient always adopted the donor's rhythm &mdash; the only known case of transplanting brain tissue that transfers the donor's behavior.
+        </div>
+      </div>
+    </div>
+
+    <div class="structure-card">
+      <div class="structure-card-body">
+        <div class="structure-name">
+          <span class="structure-dot" style="background: var(--thalamus)"></span>
+          Thalamus
+        </div>
+        <div class="structure-aka">Relay station adjacent to the hypothalamus</div>
+        <div class="structure-desc">
+          The thalamus sits just above the hypothalamus and serves as a major relay for sensory and motor signals. While not the primary circadian clock, the thalamus plays a role in sleep-wake state transitions and relays signals between the brainstem sleep centers and the cortex.
+        </div>
+      </div>
+    </div>
+
+    <div class="structure-card">
+      <div class="structure-card-body">
+        <div class="structure-name">
+          <span class="structure-dot" style="background: var(--brainstem)"></span>
+          Brainstem
+        </div>
+        <div class="structure-aka">Pons, midbrain, medulla oblongata</div>
+        <div class="structure-desc">
+          The <strong>pineal gland</strong> sits atop the brainstem, tucked under the cerebral hemispheres. It secretes <strong>melatonin</strong> almost exclusively at night, providing a hormonal signal that tracks day length and seasons. The pineal is governed by the superior cervical ganglion (sympathetic nervous system). In mammals, lengthening nights cause prolonged melatonin release, which influences the hypothalamus and regulates seasonal breeding. Exogenous melatonin helps treat jet lag and can help blind individuals entrain to a 24-hour cycle.
+        </div>
+        <div class="key-concept">
+          <div class="label">Historical note</div>
+          The pineal gland is one of few unpaired brain structures. Descartes proposed it as "the seat of the soul" because religious dogma held that the soul, like the pineal, is indivisible.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pathway-section">
+    <h2>Retinohypothalamic Pathway</h2>
+    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">Light information reaches the SCN through a direct neural pathway from specialized retinal ganglion cells containing the photopigment melanopsin. These cells do not form images &mdash; they simply detect light to entrain circadian rhythms.</p>
+
+    <div class="pathway-steps">
+      <div class="pathway-step">
+        Retina
+        <small>Melanopsin-containing ganglion cells</small>
+      </div>
+      <span class="pathway-arrow">&rarr;</span>
+      <div class="pathway-step">
+        Optic Chiasm
+        <small>Axons branch off here</small>
+      </div>
+      <span class="pathway-arrow">&rarr;</span>
+      <div class="pathway-step highlighted">
+        SCN
+        <small>Hypothalamus</small>
+      </div>
+      <span class="pathway-arrow">&rarr;</span>
+      <div class="pathway-step highlighted">
+        Pineal Gland
+        <small>Via sympathetic nervous system</small>
+      </div>
+      <span class="pathway-arrow">&rarr;</span>
+      <div class="pathway-step">
+        Melatonin
+        <small>Released at night</small>
+      </div>
+    </div>
+
+    <div class="key-concept">
+      <div class="label">Clinical relevance</div>
+      Transgenic mice lacking rods and cones but retaining melanopsin-containing ganglion cells can still entrain to light &mdash; they are blind in every other respect but their circadian rhythms function normally. Most totally blind humans lack functional melanopsin cells, causing free-running circadian rhythms and sleep difficulties.
+    </div>
+  </div>
+
+  <div class="views-pair">
+    <div>
+      <div class="view-img-wrap">
+        <img src="renders/ch10_anterior.png" alt="Anterior view highlighting thalamus and hypothalamus">
+      </div>
+      <div class="view-caption">Anterior &mdash; thalamus visible through ghosted cortex</div>
+    </div>
+    <div>
+      <div class="view-img-wrap">
+        <img src="renders/ch10_ventral.png" alt="Ventral view highlighting brainstem">
+      </div>
+      <div class="view-caption">Ventral &mdash; brainstem and hypothalamus from below</div>
+    </div>
+  </div>
+
+  <div class="vocab-list">
+    <h2>Key Terms</h2>
+    <dl>
+      <dt>Circadian</dt>
+      <dd>Rhythms lasting approximately one day (Latin <em>circa</em> + <em>dies</em>)</dd>
+      <dt>Ultradian</dt>
+      <dd>Rhythms shorter than a day (repeating more than once per day)</dd>
+      <dt>Infradian</dt>
+      <dd>Rhythms longer than a day (e.g., menstrual cycle, seasonal breeding)</dd>
+      <dt>Entrainment</dt>
+      <dd>The process of synchronizing an internal rhythm to an external cue (zeitgeber)</dd>
+      <dt>Zeitgeber</dt>
+      <dd>Any environmental cue that synchronizes circadian rhythms (German: "time giver")</dd>
+      <dt>Free-running</dt>
+      <dd>A circadian rhythm operating without external time cues, drifting from exactly 24 hours</dd>
+      <dt>Phase shift</dt>
+      <dd>A change in the timing of activity produced by a synchronizing stimulus</dd>
+      <dt>Melanopsin</dt>
+      <dd>Photopigment in specialized retinal ganglion cells that detects light for circadian entrainment</dd>
+      <dt>Melatonin</dt>
+      <dd>Hormone released by the pineal gland at night; tracks day length and promotes sleep onset</dd>
+    </dl>
+  </div>
+
+  <footer>
+    <div>Watson &amp; Breedlove, <em>Biological Psychology</em>. 3D data from <a href="https://lifesciencedb.jp/bp3d/">BodyParts3D</a> v4.0 (DBCLS), <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div>
+  </footer>
+</div>
