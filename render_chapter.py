@@ -42,6 +42,21 @@ COLORS = {
     "corpus_callosum":        (0.75, 0.75, 0.75, 1.0),
     "insula":                 (0.50, 0.70, 0.65, 1.0),
     "cingulate_gyrus":        (0.60, 0.60, 0.80, 1.0),
+    "lateral_ventricle":      (0.45, 0.65, 0.90, 1.0),
+    "third_ventricle":        (0.40, 0.60, 0.85, 1.0),
+    "fourth_ventricle":       (0.35, 0.55, 0.80, 1.0),
+    "optic_chiasm":           (0.95, 0.85, 0.40, 1.0),
+    "mammillary_body":        (0.92, 0.45, 0.38, 1.0),
+    "superior_colliculus":    (0.60, 0.52, 0.42, 1.0),
+    "inferior_colliculus":    (0.55, 0.48, 0.40, 1.0),
+    "internal_capsule":       (0.82, 0.82, 0.80, 1.0),
+    "cerebral_peduncle":      (0.70, 0.62, 0.50, 1.0),
+    "optic_tract":            (0.90, 0.80, 0.40, 1.0),
+    "anterior_commissure":    (0.78, 0.78, 0.76, 1.0),
+    "posterior_commissure":   (0.76, 0.76, 0.74, 1.0),
+    "choroid_plexus":         (0.85, 0.45, 0.50, 1.0),
+    "stria_medullaris":       (0.72, 0.72, 0.70, 1.0),
+    "cerebral_white_matter":  (0.88, 0.88, 0.86, 1.0),
 }
 
 DIM_COLOR = (0.55, 0.55, 0.58, 1.0)
@@ -51,7 +66,7 @@ DIM_ALPHA = 0.08
 CHAPTERS = {
     "ch10": {
         "name": "Biological Rhythms and Sleep",
-        "highlight": ["hypothalamus", "thalamus", "pons", "medulla_oblongata", "midbrain"],
+        "highlight": ["hypothalamus", "thalamus", "pons", "medulla_oblongata", "midbrain", "pineal_gland", "optic_chiasm", "optic_tract", "mammillary_body"],
         "views": {
             "midsagittal":    {"azimuth": 90,  "elevation": 0,  "label": "Midsagittal"},
             "anterior":       {"azimuth": 0,   "elevation": 5,  "label": "Anterior"},

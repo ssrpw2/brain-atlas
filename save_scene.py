@@ -39,6 +39,24 @@ COLORS = {
     "corpus_callosum":        (0.75, 0.75, 0.75, 1.0),
     "insula":                 (0.50, 0.70, 0.65, 1.0),
     "cingulate_gyrus":        (0.60, 0.60, 0.80, 1.0),
+    # Tier 1
+    "lateral_ventricle":      (0.45, 0.65, 0.90, 1.0),
+    "third_ventricle":        (0.40, 0.60, 0.85, 1.0),
+    "fourth_ventricle":       (0.35, 0.55, 0.80, 1.0),
+    "optic_chiasm":           (0.95, 0.85, 0.40, 1.0),
+    "mammillary_body":        (0.92, 0.45, 0.38, 1.0),
+    # Tier 2
+    "superior_colliculus":    (0.60, 0.52, 0.42, 1.0),
+    "inferior_colliculus":    (0.55, 0.48, 0.40, 1.0),
+    "internal_capsule":       (0.82, 0.82, 0.80, 1.0),
+    "cerebral_peduncle":      (0.70, 0.62, 0.50, 1.0),
+    "optic_tract":            (0.90, 0.80, 0.40, 1.0),
+    # Tier 3
+    "anterior_commissure":    (0.78, 0.78, 0.76, 1.0),
+    "posterior_commissure":   (0.76, 0.76, 0.74, 1.0),
+    "choroid_plexus":         (0.85, 0.45, 0.50, 1.0),
+    "stria_medullaris":       (0.72, 0.72, 0.70, 1.0),
+    "cerebral_white_matter":  (0.88, 0.88, 0.86, 1.0),
 }
 
 READABLE_NAMES = {
@@ -74,6 +92,21 @@ READABLE_NAMES = {
     "corpus_callosum": "Corpus Callosum",
     "insula": "Insula",
     "cingulate_gyrus": "Cingulate Gyrus",
+    "lateral_ventricle": "Lateral Ventricle",
+    "third_ventricle": "Third Ventricle",
+    "fourth_ventricle": "Fourth Ventricle",
+    "optic_chiasm": "Optic Chiasm",
+    "mammillary_body": "Mammillary Body",
+    "superior_colliculus": "Superior Colliculus",
+    "inferior_colliculus": "Inferior Colliculus",
+    "internal_capsule": "Internal Capsule",
+    "cerebral_peduncle": "Cerebral Peduncle",
+    "optic_tract": "Optic Tract",
+    "anterior_commissure": "Anterior Commissure",
+    "posterior_commissure": "Posterior Commissure",
+    "choroid_plexus": "Choroid Plexus",
+    "stria_medullaris": "Stria Medullaris",
+    "cerebral_white_matter": "Cerebral White Matter",
 }
 
 LOBE_GROUPS = {
@@ -81,9 +114,12 @@ LOBE_GROUPS = {
     "Parietal Lobe": ["postcentral_gyrus", "supramarginal_gyrus", "angular_gyrus", "superior_parietal_lobule"],
     "Temporal Lobe": ["middle_temporal_gyrus", "inferior_temporal_gyrus", "fusiform_gyrus", "parahippocampal_gyrus", "superior_temporal_gyrus"],
     "Occipital Lobe": ["occipital_lobe"],
-    "Limbic / Deep": ["hippocampus", "amygdala", "thalamus", "hypothalamus", "cingulate_gyrus", "insula", "corpus_callosum", "fornix", "fornix_commissure"],
+    "Limbic / Deep": ["hippocampus", "amygdala", "thalamus", "hypothalamus", "cingulate_gyrus", "insula", "corpus_callosum", "fornix", "fornix_commissure", "mammillary_body"],
     "Basal Ganglia": ["caudate_nucleus", "putamen", "globus_pallidus"],
-    "Brainstem + Cerebellum": ["cerebellum", "pons", "medulla_oblongata", "midbrain", "pineal_gland"],
+    "Brainstem + Cerebellum": ["cerebellum", "pons", "medulla_oblongata", "midbrain", "pineal_gland", "superior_colliculus", "inferior_colliculus", "cerebral_peduncle"],
+    "Ventricles": ["lateral_ventricle", "third_ventricle", "fourth_ventricle", "choroid_plexus"],
+    "White Matter Tracts": ["internal_capsule", "cerebral_white_matter", "anterior_commissure", "posterior_commissure", "stria_medullaris"],
+    "Visual Pathway": ["optic_chiasm", "optic_tract"],
 }
 
 bpy.ops.wm.read_factory_settings(use_empty=True)

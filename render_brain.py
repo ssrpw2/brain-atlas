@@ -41,6 +41,21 @@ COLORS = {
     "corpus_callosum":        (0.75, 0.75, 0.75, 1.0),    # corpus callosum - light gray
     "insula":                 (0.50, 0.70, 0.65, 1.0),    # insula - teal
     "cingulate_gyrus":        (0.60, 0.60, 0.80, 1.0),    # cingulate - lavender
+    "lateral_ventricle":      (0.45, 0.65, 0.90, 1.0),    # ventricles - sky blue
+    "third_ventricle":        (0.40, 0.60, 0.85, 1.0),
+    "fourth_ventricle":       (0.35, 0.55, 0.80, 1.0),
+    "optic_chiasm":           (0.95, 0.85, 0.40, 1.0),    # optic - gold
+    "mammillary_body":        (0.92, 0.45, 0.38, 1.0),    # mammillary - red-orange
+    "superior_colliculus":    (0.60, 0.52, 0.42, 1.0),    # colliculi - warm brown
+    "inferior_colliculus":    (0.55, 0.48, 0.40, 1.0),
+    "internal_capsule":       (0.82, 0.82, 0.80, 1.0),    # white matter - near-white
+    "cerebral_peduncle":      (0.70, 0.62, 0.50, 1.0),    # peduncle - warm tan
+    "optic_tract":            (0.90, 0.80, 0.40, 1.0),    # optic - gold
+    "anterior_commissure":    (0.78, 0.78, 0.76, 1.0),    # commissures - light gray
+    "posterior_commissure":   (0.76, 0.76, 0.74, 1.0),
+    "choroid_plexus":         (0.85, 0.45, 0.50, 1.0),    # choroid - rose
+    "stria_medullaris":       (0.72, 0.72, 0.70, 1.0),    # stria - gray
+    "cerebral_white_matter":  (0.88, 0.88, 0.86, 1.0),    # bulk white matter
 }
 
 VIEWS = {
